@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import NextWorkCard from "@/components/ui/NextWorkCard";
+import { works } from "@/data/works";
 
 const tags = ["卒業制作", "サービスデザイン"];
 
@@ -285,6 +287,8 @@ export default function WorksKarappoPage() {
             </motion.section>
           ))}
         </div>
+
+        <NextWorkCard work={works.find((w) => w.slug === "skilllog")!} />
       </div>
     </div>
   );
