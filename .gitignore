@@ -34,3 +34,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local files
+CLAUDE.local.md
+.gitignore-claude
+.claude/session-log.txt
+
+# large assets
+/photo/
+/Portfolio-FigmaMake/
+/Portfolio-FigmaMake_V2/

@@ -1,111 +1,83 @@
 "use client";
-import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
+const heroImage = "/images/81e2562d717d74c298775a4c0e46e860e82e4f08.png";
+
 export default function Hero() {
-  const scrollRef = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    let frame: number;
-    let start: number;
-    const animate = (ts: number) => {
-      if (!start) start = ts;
-      const progress = (ts - start) / 2000;
-      if (scrollRef.current) {
-        scrollRef.current.style.opacity = String(0.4 + 0.4 * Math.abs(Math.sin(progress * Math.PI)));
-      }
-      frame = requestAnimationFrame(animate);
-    };
-    frame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(frame);
-  }, []);
-
   return (
-    <section className="relative min-h-screen flex flex-col items-start justify-end pb-24 px-6 md:px-16 overflow-hidden bg-white">
-      {/* Background grid lines */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute left-1/4 top-0 bottom-0 w-px bg-navy/4" />
-        <div className="absolute left-2/4 top-0 bottom-0 w-px bg-navy/4" />
-        <div className="absolute left-3/4 top-0 bottom-0 w-px bg-navy/4" />
-        <div className="absolute top-1/3 left-0 right-0 h-px bg-navy/4" />
-        <div className="absolute top-2/3 left-0 right-0 h-px bg-navy/4" />
-      </div>
-
-      {/* Gold accent line top */}
-      <motion.div
-        className="absolute top-0 left-0 h-1 bg-gold"
-        initial={{ width: 0 }}
-        animate={{ width: "30%" }}
-        transition={{ duration: 1.4, ease: "easeOut", delay: 0.2 }}
+    <section
+      className="w-full relative overflow-hidden min-h-[400px] md:min-h-[600px]"
+      style={{
+        background: "linear-gradient(149.565deg, rgb(70, 99, 112) 0%, rgb(122, 141, 153) 100%)",
+      }}
+    >
+      {/* 背景画像（透過） */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `url(${heroImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.15,
+        }}
       />
 
-      {/* Background number */}
-      <motion.div
-        className="absolute top-32 right-8 md:right-16 font-serif text-[8rem] md:text-[14rem] text-navy/4 leading-none select-none pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 0.5 }}
-      >
-        01
-      </motion.div>
-
-      {/* Main content */}
-      <div className="relative z-10 max-w-4xl">
-        <motion.p
-          className="section-label mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-        >
-          Portfolio — UI/UX Designer
-        </motion.p>
-
-        <motion.h1
-          className="font-serif text-[3.5rem] md:text-[7rem] leading-[1.05] text-navy tracking-tight"
+      {/* メインコンテンツ */}
+      <div className="relative z-10 flex flex-col items-end px-6 md:px-[100px] pt-[136px] md:pt-[191px] pb-16 md:pb-24 max-w-[1200px] mx-auto">
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: "easeOut", delay: 0.45 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col gap-6 md:gap-10 items-end w-full md:max-w-[811px]"
         >
-          Yuichi
-          <br />
-          <span className="italic text-gold">Hattori</span>
-        </motion.h1>
+          {/* UI/UX Designer + 名前 */}
+          <div className="flex flex-col gap-8 w-full items-end">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text-[16px] md:text-[20px]"
+              style={{ fontWeight: 600, letterSpacing: "2px", color: "rgba(255,255,255,0.8)" }}
+            >
+              UI/UX Designer
+            </motion.div>
 
-        <motion.div
-          className="mt-8 flex items-center gap-4"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
-        >
-          <div className="gold-line" />
-          <p className="font-noto text-sm md:text-base text-navy/60 leading-relaxed tracking-wide">
-            ユーザーと誠実に向き合い、<br className="hidden md:block" />
-            やさしく使いやすいデザインをつくります。
-          </p>
-        </motion.div>
+            <div className="flex flex-col gap-2 w-full items-end">
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="text-[32px] md:text-[48px]"
+                style={{ fontWeight: 600, lineHeight: 1.15, letterSpacing: "-0.96px", color: "white" }}
+              >
+                服部 優一
+              </motion.h1>
 
-        <motion.div
-          className="mt-12"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.75 }}
-        >
-          <a
-            href="#works"
-            className="inline-flex items-center gap-4 font-noto text-xs tracking-widest text-navy border border-navy/20 px-8 py-4 hover:bg-navy hover:text-white transition-all duration-300 group"
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="text-[18px] md:text-[24px]"
+                style={{ fontWeight: 400, lineHeight: 1.33, color: "rgba(255,255,255,0.95)" }}
+              >
+                Masakazu Hattori
+              </motion.p>
+            </div>
+          </div>
+
+          {/* キャッチコピー */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="text-[24px] md:text-[32px] text-right w-full"
+            style={{ fontWeight: 400, lineHeight: 1.4, letterSpacing: "-0.24px", color: "white" }}
           >
-            実績を見る
-            <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
-          </a>
+            生活者の解像度で
+            <br />
+            サービスを設計する
+          </motion.h2>
         </motion.div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-10 right-10 flex flex-col items-center gap-3">
-        <span ref={scrollRef} className="font-serif text-xs tracking-widest text-navy/40 -rotate-90">
-          Scroll
-        </span>
-        <div className="w-px h-16 bg-gradient-to-b from-navy/20 to-transparent" />
       </div>
     </section>
   );

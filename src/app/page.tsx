@@ -1,16 +1,14 @@
 import Hero from "@/components/sections/Hero";
-import About from "@/components/sections/About";
 import Works from "@/components/sections/Works";
-import Skills from "@/components/sections/Skills";
+import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <main>
+    <main className="pt-20">
       <Hero />
-      <About />
       <Works />
-      <Skills />
+      <About />
       <Contact />
     </main>
   );

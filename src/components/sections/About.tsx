@@ -1,69 +1,82 @@
 "use client";
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-};
+const profileImage = "/images/profile-about.jpg";
 
 export default function About() {
   return (
-    <section id="about" className="py-32 md:py-40 px-6 md:px-16 bg-cream">
-      <div className="max-w-6xl mx-auto">
+    <section id="about" className="py-20 md:py-32" style={{ backgroundColor: "var(--surface-container-lowest)" }}>
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+        {/* 見出し */}
         <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={{ show: { transition: { staggerChildren: 0.12 } } }}
-          className="grid md:grid-cols-2 gap-16 md:gap-24 items-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-16 flex flex-col gap-4"
         >
-          {/* Image */}
-          <motion.div variants={fadeUp} className="relative">
-            <div className="relative aspect-[3/4] bg-navy/5 overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center text-navy/20">
-                <div className="text-center">
-                  <div className="font-serif text-6xl">YH</div>
-                  <div className="text-xs tracking-widest mt-2 font-noto">Profile Photo</div>
-                </div>
-              </div>
-              {/* Decorative frame */}
-              <div className="absolute -bottom-4 -right-4 w-full h-full border border-gold/30 pointer-events-none" />
-            </div>
-          </motion.div>
+          <div
+            className="text-[11px]"
+            style={{
+              fontWeight: 600,
+              letterSpacing: "1.1px",
+              textTransform: "uppercase",
+              color: "var(--on-surface-variant)",
+            }}
+          >
+            About Me
+          </div>
+          <h2
+            className="text-[36px] md:text-[46px]"
+            style={{ fontWeight: 600, lineHeight: 1.2, letterSpacing: "-0.92px", color: "var(--on-surface)" }}
+          >
+            自己紹介
+          </h2>
+        </motion.div>
 
-          {/* Text */}
-          <div>
-            <motion.p variants={fadeUp} className="section-label mb-6">
-              About
-            </motion.p>
-            <motion.h2
-              variants={fadeUp}
-              className="font-serif text-4xl md:text-5xl text-navy leading-tight mb-8"
+        {/* テキスト + 画像 */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="grid md:grid-cols-2 gap-12 md:gap-20 items-center"
+        >
+          {/* テキスト */}
+          <div className="flex flex-col gap-6">
+            <p
+              className="text-[16px]"
+              style={{ fontWeight: 400, lineHeight: 1.8, color: "var(--on-surface-variant)" }}
             >
-              ユーザーと
-              <br />
-              <span className="italic text-gold">誠実に、</span>
-              <br />
-              向き合う。
-            </motion.h2>
-            <motion.p
-              variants={fadeUp}
-              className="font-noto text-sm text-navy/60 leading-[2.2] mb-6"
+              1996年、東京生まれ。大学を2019年に卒業後、生命保険会社に入社。
+            </p>
+            <p
+              className="text-[16px]"
+              style={{ fontWeight: 400, lineHeight: 1.8, color: "var(--on-surface-variant)" }}
             >
-              はじめまして、服部 優一です。UI/UXデザイナーとして、モバイルアプリや業務システムのデザインに携わっています。
-            </motion.p>
-            <motion.p
-              variants={fadeUp}
-              className="font-noto text-sm text-navy/60 leading-[2.2] mb-10"
+              最初の数年は、お客さまの声を集めて分析したり、世の中のトレンドを調べたりする仕事をしていました。たくさんの「生活者の声」に触れるうちに、「この声を自社のサービスに活かしたい」という気持ちが強くなり、2025年に社内のデザイン組織へ。いまはUXコンセプトの設計からUI実装、デザインシステムの運用まで幅広く挑戦中です。
+            </p>
+            <p
+              className="text-[16px]"
+              style={{ fontWeight: 400, lineHeight: 1.8, color: "var(--on-surface-variant)" }}
             >
-              「やさしいデザイン」を信条に、ユーザーインタビューやユーザビリティテストを通じて、使う人の気持ちを丁寧に拾い上げることを大切にしています。複雑な情報をわかりやすく整理し、誰にとっても使いやすい体験をつくることが、私の仕事の根幹です。
-            </motion.p>
-            <motion.div variants={fadeUp} className="flex items-center gap-4">
-              <div className="gold-line" />
-              <span className="font-noto text-xs tracking-widest text-navy/40">
-                デザインシステム / モバイルアプリ / ユーザーリサーチ
-              </span>
-            </motion.div>
+              「なぜこの画面なのか」を、事業の論理とユーザーの感情の両面から語れるデザイナーでありたい、と思っています。
+            </p>
+          </div>
+
+          {/* 画像 */}
+          <div
+            className="overflow-hidden rounded-2xl"
+            style={{ backgroundColor: "var(--surface-dim)", padding: "32px" }}
+          >
+            <Image
+              src={profileImage}
+              alt="服部優一"
+              width={600}
+              height={800}
+              className="w-full h-auto object-cover rounded-xl"
+            />
           </div>
         </motion.div>
       </div>

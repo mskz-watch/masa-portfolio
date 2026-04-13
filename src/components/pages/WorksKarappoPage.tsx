@@ -1,0 +1,291 @@
+"use client";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+
+const tags = ["卒業制作", "サービスデザイン"];
+
+interface SectionContent {
+  label?: string;
+  value?: string;
+  text?: string;
+  list?: string[];
+}
+
+interface Section {
+  title: string;
+  content: SectionContent[];
+}
+
+const sections: Section[] = [
+  {
+    title: "Overview",
+    content: [
+      { label: "サービス名", value: "Karappo（カラッポ）" },
+      { label: "概要", value: "調味料の使い切りを支援し、毎日の料理に驚きを与えるアプリ" },
+      { label: "ロール", value: "卒業制作 / サービスデザイン" },
+      { label: "期間", value: "2025年11月 - 2026年2月（4ヶ月）" },
+    ],
+  },
+  {
+    title: "Problem",
+    content: [
+      {
+        text: "最初ワクワクして買った調味料が使い切れなかった。そんな個人的な体験から始まったリサーチでしたが、同じような体験を抱える人たちの輪郭が見えてきました。",
+      },
+      {
+        text: "Oisixの調査によると、調味料は家庭内フードロスの上位2位。10人中6人が調味料を余らせています。",
+      },
+      {
+        text: "ユーザーインタビューで聞こえた3つの声：",
+        list: [
+          "ドレッシング色んな種類買っちゃうけど最後まで使い切れないんだよね（男性,40代）",
+          "このまえ買ってたのを忘れてて、同じ調味料をまた買ってしまったことがある（女性,30代）",
+          "美味しそうと思って買ってきて一回使ったけど、いつもの料理には合わないから使えない（女性,20代）",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Insight",
+    content: [
+      {
+        text: '「ズボラだから使い切れない」という表面的な理解から、「"専用"の思い込みが原因」という本質的な課題への反転。',
+      },
+      {
+        text: "調味料は「これにしか使えない」という思い込みが、使う機会を狭めていました。実は多くの調味料は汎用性が高く、様々な料理に活用できます。",
+      },
+      {
+        text: "この気づきが、サービスコンセプトの核になりました。",
+      },
+    ],
+  },
+  {
+    title: "Concept",
+    content: [
+      { text: "Karappoは3つの原則に基づいて設計されています：" },
+      {
+        list: [
+          "① 使い切る楽しさを伝える — 調味料を使い切った達成感をゲーミフィケーション",
+          "② 管理させない・考えなくて良い — 自動通知とレコメンドで認知負荷を下げる",
+          "③ 意外な一品でレパートリーを増やす — 「こんな使い方もあるんだ」という発見体験",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Business Model",
+    content: [
+      {
+        text: "フリーミアム × 食品メーカーとのデータ連携プラットフォームモデル",
+      },
+      {
+        list: [
+          "基本機能は無料：調味料管理・レシピ提案",
+          "プレミアム機能：詳細な使い切り分析・専門家監修コンテンツ",
+          "B2B連携：食品メーカーへの購買データ・使用データ提供",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Vision",
+    content: [
+      {
+        text: "使い切ることで、暮らしが整う。試してみることで、食卓が豊かになる。",
+      },
+      {
+        text: "家での料理が、ただこなすものではなく、作り手たちの創造性を刺激している世界をめざします",
+      },
+    ],
+  },
+];
+
+export default function WorksKarappoPage() {
+  return (
+    <div className="min-h-screen pt-32 pb-24" style={{ backgroundColor: "var(--background)" }}>
+      <div className="max-w-[900px] mx-auto px-6 lg:px-12">
+        {/* 戻るリンク */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-12"
+        >
+          <Link
+            href="/#works"
+            className="inline-flex items-center gap-2 transition-colors duration-300"
+            style={{ color: "var(--on-surface-variant)" }}
+          >
+            <ArrowLeft size={20} />
+            <span className="text-[16px]">Works に戻る</span>
+          </Link>
+        </motion.div>
+
+        {/* Hero */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-20"
+        >
+          <div className="mb-6 flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="px-4 py-2 rounded-full inline-block text-[13px]"
+                style={{
+                  backgroundColor: "var(--secondary-container)",
+                  color: "var(--on-surface)",
+                  fontWeight: 500,
+                }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <h1
+            className="mb-6 text-[48px] md:text-[64px]"
+            style={{
+              fontWeight: 600,
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+              color: "var(--on-surface)",
+            }}
+          >
+            Karappo
+          </h1>
+
+          <p
+            className="mb-12 text-[20px] md:text-[24px]"
+            style={{
+              fontWeight: 400,
+              lineHeight: 1.5,
+              color: "var(--on-surface-variant)",
+            }}
+          >
+            調味料の使い切りを支援し、毎日の料理に驚きを与えるアプリ
+          </p>
+
+          <Image
+            src="/images/f73431a336c15f3a62ec9df0f53dc014ede9939d.png"
+            alt="Karappo Hero"
+            width={1200}
+            height={800}
+            className="w-full h-auto rounded-xl"
+          />
+        </motion.div>
+
+        {/* Sections */}
+        <div className="flex flex-col gap-20">
+          {sections.map((section, sectionIndex) => (
+            <motion.section
+              key={section.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ delay: sectionIndex * 0.05, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div
+                className="mb-8 pb-4"
+                style={{ borderBottom: "1px solid rgba(172,179,182,0.3)" }}
+              >
+                <h2
+                  className="text-[24px] md:text-[28px]"
+                  style={{ fontWeight: 600, lineHeight: 1.3, color: "var(--on-surface)" }}
+                >
+                  {section.title}
+                </h2>
+              </div>
+
+              <div className="flex flex-col gap-6">
+                {section.content.map((item, itemIndex) => (
+                  <div key={itemIndex}>
+                    {item.label && (
+                      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                        <div
+                          className="text-[15px]"
+                          style={{ fontWeight: 600, color: "var(--on-surface)" }}
+                        >
+                          {item.label}
+                        </div>
+                        <div
+                          className="md:col-span-3 text-[15px]"
+                          style={{ fontWeight: 400, lineHeight: 1.7, color: "var(--on-surface-variant)" }}
+                        >
+                          {item.value}
+                        </div>
+                      </div>
+                    )}
+
+                    {item.text && (
+                      <p
+                        className="text-[16px]"
+                        style={{
+                          fontWeight: 400,
+                          lineHeight: 1.7,
+                          color: "var(--on-surface-variant)",
+                          marginBottom: item.list ? "1rem" : 0,
+                        }}
+                      >
+                        {item.text}
+                      </p>
+                    )}
+
+                    {item.list && (
+                      <ul className="flex flex-col gap-3 ml-6">
+                        {item.list.map((listItem, listIndex) => (
+                          <li
+                            key={listIndex}
+                            className="relative pl-6 text-[16px]"
+                            style={{ fontWeight: 400, lineHeight: 1.7, color: "var(--on-surface-variant)" }}
+                          >
+                            <span
+                              className="absolute left-0 top-3 w-1.5 h-1.5 rounded-full"
+                              style={{ backgroundColor: "var(--primary)" }}
+                            />
+                            {listItem}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {section.title === "Insight" && (
+                <Image
+                  src="/images/82007979ef475c0cddbb76d2fd5d4409c01d9fdb.png"
+                  alt="Karappo Insight"
+                  width={1200}
+                  height={800}
+                  className="mt-8 w-full h-auto rounded-xl"
+                />
+              )}
+              {section.title === "Concept" && (
+                <Image
+                  src="/images/9840bd23a37faf8afb266bb38e6a1ff918fbf2ab.png"
+                  alt="App interface concept"
+                  width={1200}
+                  height={800}
+                  className="mt-8 w-full h-auto rounded-xl"
+                />
+              )}
+              {section.title === "Business Model" && (
+                <Image
+                  src="/images/b38968ad295873bb1621cdc468c7af3b4cdf140c.png"
+                  alt="Business Model"
+                  width={1200}
+                  height={800}
+                  className="mt-8 w-full h-auto rounded-xl"
+                />
+              )}
+            </motion.section>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -1,5 +1,5 @@
 "use client";
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
 
 const skillGroups = [
   {
@@ -31,27 +31,39 @@ const skillGroups = [
   },
 ];
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-};
-
 export default function Skills() {
   return (
-    <section id="skills" className="py-32 md:py-40 px-6 md:px-16 bg-navy">
-      <div className="max-w-6xl mx-auto">
-        {/* Heading */}
+    <section
+      id="skills"
+      className="py-20 md:py-32"
+      style={{ backgroundColor: "var(--surface-container-low)" }}
+    >
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+        {/* 見出し */}
         <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={{ show: { transition: { staggerChildren: 0.1 } } }}
-          className="mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-16"
         >
-          <motion.p variants={fadeUp} className="section-label text-gold mb-4">Skills</motion.p>
-          <motion.h2 variants={fadeUp} className="font-serif text-4xl md:text-6xl text-white leading-tight">
+          <div
+            className="text-[11px] mb-4"
+            style={{
+              fontWeight: 600,
+              letterSpacing: "1.1px",
+              textTransform: "uppercase",
+              color: "var(--on-surface-variant)",
+            }}
+          >
+            Skills
+          </div>
+          <h2
+            className="text-[36px] md:text-[46px]"
+            style={{ fontWeight: 600, lineHeight: 1.2, letterSpacing: "-0.92px", color: "var(--on-surface)" }}
+          >
             スキル
-          </motion.h2>
+          </h2>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-12 md:gap-8">
@@ -60,23 +72,37 @@ export default function Skills() {
               key={group.label}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: gi * 0.15 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: gi * 0.15 }}
             >
               <div className="flex items-center gap-3 mb-8">
-                <span className="font-serif text-gold text-xs tracking-widest">{group.label}</span>
-                <div className="flex-1 h-px bg-white/10" />
+                <span
+                  className="text-[12px]"
+                  style={{ fontWeight: 600, letterSpacing: "1px", color: "var(--primary)" }}
+                >
+                  {group.label}
+                </span>
+                <div className="flex-1 h-px" style={{ backgroundColor: "var(--outline-variant)" }} />
               </div>
+
               <div className="space-y-6">
                 {group.skills.map((skill, si) => (
                   <div key={skill.name}>
                     <div className="flex justify-between mb-2">
-                      <span className="font-noto text-xs text-white/60 tracking-wide">{skill.name}</span>
-                      <span className="font-serif text-xs text-gold/60">{skill.level}</span>
+                      <span className="text-[13px]" style={{ color: "var(--on-surface-variant)" }}>
+                        {skill.name}
+                      </span>
+                      <span className="text-[12px]" style={{ color: "var(--primary)", fontWeight: 600 }}>
+                        {skill.level}
+                      </span>
                     </div>
-                    <div className="h-px bg-white/10 relative overflow-hidden">
+                    <div
+                      className="h-1 rounded-full relative overflow-hidden"
+                      style={{ backgroundColor: "var(--surface-variant)" }}
+                    >
                       <motion.div
-                        className="absolute inset-y-0 left-0 bg-gold"
+                        className="absolute inset-y-0 left-0 rounded-full"
+                        style={{ backgroundColor: "var(--primary)" }}
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}
                         viewport={{ once: true }}

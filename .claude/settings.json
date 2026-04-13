@@ -1,0 +1,71 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(pnpm run *)",
+      "Bash(pnpm add *)",
+      "Bash(pnpm install)",
+      "Bash(pnpm list *)",
+      "Bash(pnpm outdated)",
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git branch *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git stash *)",
+      "Bash(git checkout *)",
+      "Bash(git fetch)",
+      "Bash(ls *)",
+      "Bash(find * -type f)",
+      "Bash(cat *)",
+      "Bash(grep *)",
+      "Bash(echo *)",
+      "Bash(mkdir *)",
+      "Bash(cp *)",
+      "Bash(mv *)",
+      "Bash(node *)",
+      "Bash(npx tsc *)",
+      "Bash(npx prettier *)",
+      "Bash(npx eslint *)",
+      "Read",
+      "Write",
+      "Edit"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(curl *)",
+      "Bash(wget *)",
+      "Bash(git push --force *)",
+      "Bash(git push -f *)",
+      "Read(.env)",
+      "Read(.env.*)",
+      "Read(.env.local)",
+      "Read(.env.production)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '=== Session Start ===' && date && echo '' && cat PROGRESS.md 2>/dev/null || echo '(PROGRESS.md なし)'",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '=== Session End ===' && date >> .claude/session-log.txt",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

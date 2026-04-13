@@ -1,84 +1,122 @@
 "use client";
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import { works } from "@/data/works";
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-};
 
 export default function Works() {
   return (
-    <section id="works" className="py-32 md:py-40 px-6 md:px-16 bg-white">
-      <div className="max-w-6xl mx-auto">
-        {/* Heading */}
+    <section id="works" className="py-20 md:py-32" style={{ backgroundColor: "var(--background)" }}>
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+        {/* 見出し */}
         <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={{ show: { transition: { staggerChildren: 0.1 } } }}
-          className="mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-16"
         >
-          <motion.p variants={fadeUp} className="section-label mb-4">Works</motion.p>
-          <motion.h2 variants={fadeUp} className="font-serif text-4xl md:text-6xl text-navy leading-tight">
-            制作実績
-          </motion.h2>
+          <div
+            className="text-[11px] mb-4"
+            style={{
+              fontWeight: 600,
+              letterSpacing: "1.1px",
+              textTransform: "uppercase",
+              color: "var(--on-surface-variant)",
+            }}
+          >
+            Selected Works
+          </div>
+          <h2
+            className="text-[36px] md:text-[46px]"
+            style={{ fontWeight: 600, lineHeight: 1.2, letterSpacing: "-0.92px", color: "var(--on-surface)" }}
+          >
+            これまでの制作物
+          </h2>
         </motion.div>
 
-        {/* Work items */}
-        <div className="space-y-8">
-          {works.map((work, i) => (
-            <motion.div
+        {/* Worksカード */}
+        <div className="flex flex-col gap-16">
+          {works.map((work, index) => (
+            <motion.article
               key={work.slug}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: i * 0.1 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="group relative"
             >
-              <Link href={`/works/${work.slug}`} className="group block">
-                <div className="relative overflow-hidden border border-navy/8 hover:border-gold/40 transition-all duration-500 bg-white">
-                  <div className="grid md:grid-cols-[1fr_2fr] gap-0">
-                    {/* Thumbnail */}
-                    <div
-                      className="relative h-56 md:h-72 overflow-hidden flex items-center justify-center"
-                      style={{ backgroundColor: work.color }}
-                    >
-                      <div className="font-serif text-7xl text-navy/10 group-hover:scale-110 transition-transform duration-700">
-                        0{i + 1}
-                      </div>
-                      {/* Hover overlay */}
-                      <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/5 transition-all duration-500" />
-                    </div>
+              <Link href={`/works/${work.slug}`} className="block">
+                {/* サムネイル */}
+                <div className="relative overflow-hidden rounded-2xl mb-8">
+                  <Image
+                    src={work.image}
+                    alt={work.title}
+                    width={1200}
+                    height={675}
+                    className="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
 
-                    {/* Info */}
-                    <div className="p-8 md:p-12 flex flex-col justify-between">
-                      <div>
-                        <div className="flex items-center gap-4 mb-5">
-                          <span className="font-noto text-xs tracking-widest text-gold/80 border border-gold/30 px-3 py-1">
-                            {work.category}
-                          </span>
-                          <span className="font-serif text-sm text-navy/30">{work.year}</span>
-                        </div>
-                        <h3 className="font-serif text-3xl md:text-4xl text-navy mb-4 group-hover:text-gold transition-colors duration-300">
-                          {work.title}
-                        </h3>
-                        <p className="font-noto text-sm text-navy/50 leading-relaxed">
-                          {work.description}
-                        </p>
-                      </div>
-                      <div className="mt-8 flex items-center gap-3 text-xs tracking-widest font-noto text-navy/40 group-hover:text-gold transition-colors duration-300">
-                        <span>詳細を見る</span>
-                        <span className="group-hover:translate-x-2 transition-transform duration-300">→</span>
-                      </div>
-                    </div>
+                {/* テキスト */}
+                <div className="flex flex-col gap-4">
+                  {/* タグ */}
+                  <div className="flex flex-wrap gap-2">
+                    {work.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-4 py-2 rounded-full text-[12px]"
+                        style={{
+                          backgroundColor: "var(--secondary-container)",
+                          color: "var(--on-surface)",
+                          fontWeight: 500,
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                    <span
+                      className="px-4 py-2 rounded-full text-[12px]"
+                      style={{
+                        backgroundColor: "var(--surface-container-low)",
+                        color: "var(--on-surface-variant)",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {work.year}
+                    </span>
                   </div>
 
-                  {/* Bottom gold line on hover */}
-                  <div className="absolute bottom-0 left-0 h-0.5 bg-gold w-0 group-hover:w-full transition-all duration-500" />
+                  {/* タイトル */}
+                  <h3
+                    className="text-[32px] md:text-[36px]"
+                    style={{ fontWeight: 600, lineHeight: 1.2, letterSpacing: "-0.72px", color: "var(--on-surface)" }}
+                  >
+                    {work.title}
+                  </h3>
+
+                  {/* 説明 */}
+                  <p
+                    className="text-[16px] md:text-[18px]"
+                    style={{ fontWeight: 400, lineHeight: 1.6, color: "var(--on-surface-variant)" }}
+                  >
+                    {work.description}
+                  </p>
+
+                  {/* リンク */}
+                  <div
+                    className="flex items-center gap-2 mt-2 transition-all duration-300 group-hover:gap-4"
+                    style={{ color: "var(--primary)" }}
+                  >
+                    <span className="text-[16px]" style={{ fontWeight: 600 }}>
+                      詳細を見る
+                    </span>
+                    <ArrowRight size={20} />
+                  </div>
                 </div>
               </Link>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>
