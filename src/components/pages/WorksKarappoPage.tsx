@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Smartphone } from "lucide-react";
 import NextWorkCard from "@/components/ui/NextWorkCard";
 import { works } from "@/data/works";
 
@@ -286,6 +286,24 @@ export default function WorksKarappoPage() {
               )}
             </motion.section>
           ))}
+        </div>
+
+        <div className="mt-20">
+          <a
+            href="/prototype/karappo/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-full transition-colors duration-300"
+            style={{
+              backgroundColor: "var(--primary)",
+              color: "var(--on-primary)",
+              fontWeight: 600,
+              fontSize: "15px",
+            }}
+          >
+            <Smartphone size={18} />
+            モバイルプロトタイプを見る
+          </a>
         </div>
 
         <NextWorkCard work={works.find((w) => w.slug === "skilllog")!} />
