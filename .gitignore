@@ -45,3 +45,7 @@ CLAUDE.local.md
 /Portfolio-FigmaMake/
 /Portfolio-FigmaMake_V2/
 package-lock.json
+
+# Karappo prototype
+/Karappo_prototype/node_modules/
+/Karappo_prototype/dist/
