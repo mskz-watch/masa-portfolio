@@ -51,27 +51,6 @@ function KarappoLogo() {
 export function SplashScreen({ onStart }: SplashScreenProps) {
   return (
     <div className="relative w-full h-full bg-[#3e76bd] flex flex-col items-center overflow-hidden">
-      {/* Status bar */}
-      <div className="absolute top-0 left-0 right-0 h-[54px] flex items-center justify-between px-[32px] pl-[52px] z-10">
-        <p
-          className="text-white text-[17px] text-center whitespace-nowrap"
-          style={{ fontFamily: "'SF Pro Text', -apple-system, sans-serif", fontWeight: 600, lineHeight: '22px' }}
-        >
-          9:41
-        </p>
-        <div className="h-[13px] relative w-[79.67px]">
-          <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 79.6697 13">
-            <path clipRule="evenodd" d={svgPaths.p17c9cd00} fill="white" fillRule="evenodd" />
-            <path clipRule="evenodd" d={svgPaths.pd628d00} fill="white" fillRule="evenodd" />
-            <g>
-              <rect height="12" opacity="0.35" rx="3.8" stroke="white" width="24" x="52.8417" y="0.5" />
-              <path d={svgPaths.p5358600} fill="white" opacity="0.4" />
-              <rect fill="white" height="9" rx="2.5" width="21" x="54.3417" y="2" />
-            </g>
-          </svg>
-        </div>
-      </div>
-
       {/* Main content area - centered */}
       <div className="flex flex-col items-center justify-center flex-1">
         <KarappoLogo />

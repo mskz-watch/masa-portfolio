@@ -13,7 +13,6 @@ import { CourseConfirmScreen } from "./components/CourseConfirmScreen";
 import { SplashScreen } from "./components/SplashScreen";
 import { recipeDetails } from "./components/recipeData";
 import type { PantryItem } from "./components/AddCondimentScreen";
-import IOsStatusBar from "../imports/IOsStatusBar";
 
 const recipes = recipeDetails.map((r) => ({
   id: r.id,
@@ -354,19 +353,12 @@ export default function App() {
     }
   };
 
-  const showStatusBar = screen.type !== "splash";
-
   return (
-    <div className="flex justify-center w-full min-h-screen bg-[#e8e8e8]">
+    <div className="flex justify-center w-full min-h-[100dvh] bg-[#e8e8e8]">
       <div
-        className="relative flex flex-col w-full max-w-[430px] h-screen bg-[#fffcf4] overflow-hidden"
+        className="relative flex flex-col w-full max-w-[430px] h-[100dvh] bg-[#fffcf4] overflow-hidden"
       >
         <div className="flex flex-col w-full h-full absolute inset-0">
-          {showStatusBar && (
-            <div className="w-full h-[54px] shrink-0 z-40">
-              <IOsStatusBar />
-            </div>
-          )}
           {renderScreen()}
         </div>
       </div>
