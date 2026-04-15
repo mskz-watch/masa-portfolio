@@ -151,7 +151,7 @@ export function AddCondimentScreen({
             onChange={(e) => setQuery(e.target.value)}
             placeholder="調味料名で検索"
             className="bg-transparent w-full outline-none font-['Noto_Sans_JP',sans-serif] text-[16px] text-[rgba(10,10,10,0.8)] tracking-[-0.31px] placeholder:text-[rgba(10,10,10,0.35)]"
-            autoFocus
+
           />
         </div>
       </div>
