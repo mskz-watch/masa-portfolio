@@ -60,77 +60,78 @@ export default function WorksPage() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 + index * 0.15, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="group relative"
+              className="group relative flex flex-col gap-8"
             >
-              <Link href={`/works/${work.slug}`} className="block">
-                {/* サムネイル */}
-                <div className="relative overflow-hidden rounded-2xl mb-8">
-                  <Image
-                    src={work.image}
-                    alt={work.title}
-                    width={1200}
-                    height={675}
-                    className="w-full h-auto transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
+              {/* サムネイル（リンク） */}
+              <Link href={`/works/${work.slug}`} className="block overflow-hidden rounded-2xl">
+                <Image
+                  src={work.image}
+                  alt={work.title}
+                  width={1200}
+                  height={675}
+                  className="w-full h-auto transition-transform duration-700 hover:scale-105"
+                />
+              </Link>
 
-                {/* テキスト */}
-                <div className="flex flex-col gap-4">
-                  {/* タグ + 年 */}
-                  <div className="flex flex-wrap gap-2">
-                    {work.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-4 py-2 rounded-full text-[12px]"
-                        style={{
-                          backgroundColor: "var(--secondary-container)",
-                          color: "var(--on-surface)",
-                          fontWeight: 500,
-                        }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
+              {/* テキスト */}
+              <div className="flex flex-col gap-4">
+                {/* タグ + 年 */}
+                <div className="flex flex-wrap gap-2">
+                  {work.tags.map((tag) => (
                     <span
+                      key={tag}
                       className="px-4 py-2 rounded-full text-[12px]"
                       style={{
-                        backgroundColor: "var(--surface-container-low)",
-                        color: "var(--on-surface-variant)",
+                        backgroundColor: "var(--secondary-container)",
+                        color: "var(--on-surface)",
                         fontWeight: 500,
                       }}
                     >
-                      {work.year}
+                      {tag}
                     </span>
-                  </div>
+                  ))}
+                  <span
+                    className="px-4 py-2 rounded-full text-[12px]"
+                    style={{
+                      backgroundColor: "var(--surface-container-low)",
+                      color: "var(--on-surface-variant)",
+                      fontWeight: 500,
+                    }}
+                  >
+                    {work.year}
+                  </span>
+                </div>
 
-                  {/* タイトル */}
+                {/* タイトル（リンク） */}
+                <Link href={`/works/${work.slug}`}>
                   <h2
-                    className="text-[32px] md:text-[36px]"
+                    className="text-[32px] md:text-[36px] hover:opacity-70 transition-opacity duration-300"
                     style={{ fontWeight: 600, lineHeight: 1.2, letterSpacing: "-0.72px", color: "var(--on-surface)" }}
                   >
                     {work.title}
                   </h2>
+                </Link>
 
-                  {/* 概要 */}
-                  <p
-                    className="text-[16px] md:text-[18px]"
-                    style={{ fontWeight: 400, lineHeight: 1.6, color: "var(--on-surface-variant)" }}
-                  >
-                    {work.overview}
-                  </p>
+                {/* 概要（リンクなし） */}
+                <p
+                  className="text-[16px] md:text-[18px]"
+                  style={{ fontWeight: 400, lineHeight: 1.6, color: "var(--on-surface-variant)" }}
+                >
+                  {work.overview}
+                </p>
 
-                  {/* リンク */}
-                  <div
-                    className="flex items-center gap-2 mt-2 transition-all duration-300 group-hover:gap-4"
-                    style={{ color: "var(--primary)" }}
-                  >
-                    <span className="text-[16px]" style={{ fontWeight: 600 }}>
-                      詳細を見る
-                    </span>
-                    <ArrowRight size={20} />
-                  </div>
-                </div>
-              </Link>
+                {/* 詳細を見るボタン（独立リンク） */}
+                <Link
+                  href={`/works/${work.slug}`}
+                  className="inline-flex items-center gap-2 mt-2 transition-all duration-300 hover:gap-4 w-fit"
+                  style={{ color: "var(--primary)" }}
+                >
+                  <span className="text-[16px]" style={{ fontWeight: 600 }}>
+                    詳細を見る
+                  </span>
+                  <ArrowRight size={20} />
+                </Link>
+              </div>
             </motion.article>
           ))}
         </div>
