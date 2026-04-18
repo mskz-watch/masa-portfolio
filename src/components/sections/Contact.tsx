@@ -29,13 +29,17 @@ export default function Contact() {
             Contact
           </div>
           <h2
-            className="text-[36px] md:text-[46px] mb-8"
+            className="text-[36px] md:text-[46px] mb-6"
             style={{ fontWeight: 600, lineHeight: 1.2, letterSpacing: "-0.92px", color: "var(--on-surface)" }}
           >
-            お気軽に
-            <br />
-            ご連絡ください。
+            お気軽にご連絡ください。
           </h2>
+          <p
+            className="mb-8 text-[16px]"
+            style={{ fontWeight: 400, lineHeight: 1.8, color: "var(--on-surface-variant)" }}
+          >
+            デザインに関する情報交換やご相談など、お待ちしています。
+          </p>
           <motion.a
             href="mailto:mskz.terao31+work@gmail.com"
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105"
@@ -48,7 +52,7 @@ export default function Contact() {
             }}
             whileHover={{ gap: "1rem" }}
           >
-            メールを送る
+            メールで連絡する
             <ArrowRight size={20} />
           </motion.a>
 
