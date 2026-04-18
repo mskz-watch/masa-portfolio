@@ -114,12 +114,12 @@ export default function WorksSkilllogPage() {
           className="mb-12"
         >
           <Link
-            href="/#works"
+            href="/works"
             className="inline-flex items-center gap-2 transition-colors duration-300"
             style={{ color: "var(--on-surface-variant)" }}
           >
             <ArrowLeft size={20} />
-            <span className="text-[16px]">Works に戻る</span>
+            <span className="text-[16px]">Works 一覧に戻る</span>
           </Link>
         </motion.div>
 

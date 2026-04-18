@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { href: "#works", label: "Works" },
+  { href: "/works", label: "Works" },
   { href: "/about", label: "About" },
   { href: "#contact", label: "Contact" },
 ];
