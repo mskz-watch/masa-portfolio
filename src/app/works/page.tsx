@@ -42,13 +42,13 @@ export default function WorksPage() {
               color: "var(--on-surface-variant)",
             }}
           >
-            Selected Works
+            WORKS
           </div>
           <h1
             className="text-[36px] md:text-[56px]"
             style={{ fontWeight: 600, lineHeight: 1.2, letterSpacing: "-0.02em", color: "var(--on-surface)" }}
           >
-            これまでの制作物
+            制作物の一覧
           </h1>
         </motion.div>
 
