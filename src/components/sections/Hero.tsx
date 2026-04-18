@@ -73,9 +73,9 @@ export default function Hero() {
             className="text-[24px] md:text-[32px] text-right w-full"
             style={{ fontWeight: 400, lineHeight: 1.4, letterSpacing: "-0.24px", color: "white" }}
           >
-            生活者の解像度で
+            聞くことから、
             <br />
-            サービスを設計する
+            はじめるデザイン。
           </motion.h2>
         </motion.div>
       </div>
