@@ -112,13 +112,27 @@ export default function WorksPage() {
                   </h2>
                 </Link>
 
-                {/* 概要（リンクなし） */}
-                <p
-                  className="text-[16px] md:text-[18px]"
-                  style={{ fontWeight: 400, lineHeight: 1.6, color: "var(--on-surface-variant)" }}
-                >
-                  {work.overview}
-                </p>
+                {/* コンテキスト + Overview構造データ */}
+                <div className="flex flex-col gap-3">
+                  <p
+                    className="text-[16px] md:text-[18px]"
+                    style={{ fontWeight: 400, lineHeight: 1.6, color: "var(--on-surface-variant)" }}
+                  >
+                    {work.context}
+                  </p>
+                  <dl className="flex flex-col gap-1">
+                    {[
+                      { label: "概要", value: work.description },
+                      { label: "ロール", value: work.role },
+                      { label: "期間", value: work.period },
+                    ].map(({ label, value }) => (
+                      <div key={label} className="grid grid-cols-[4rem_1fr] text-[13px] md:text-[14px]" style={{ lineHeight: 1.7 }}>
+                        <dt style={{ fontWeight: 600, color: "var(--on-surface)" }}>{label}</dt>
+                        <dd style={{ fontWeight: 400, color: "var(--on-surface-variant)" }}>{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
 
                 {/* 詳細を見るボタン（独立リンク） */}
                 <Link
