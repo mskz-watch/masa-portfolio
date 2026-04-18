@@ -134,26 +134,25 @@ export default function AboutPage() {
             キャリアの流れ
           </h2>
 
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col">
             {career.map((item, index) => (
-              <div key={index} className="relative pl-8">
-                {/* タイムラインライン（ドットの背面） */}
-                {index !== career.length - 1 && (
+              <div key={index} className="flex gap-6">
+                {/* 左列：ドット + 線 */}
+                <div className="flex flex-col items-center">
                   <div
-                    className="absolute left-[5px] top-2 w-px"
-                    style={{
-                      backgroundColor: "var(--outline-variant)",
-                      bottom: "-2rem",
-                    }}
+                    className="w-3 h-3 rounded-full shrink-0 mt-1"
+                    style={{ backgroundColor: "var(--primary)" }}
                   />
-                )}
-                {/* タイムラインドット（線の前面） */}
-                <div
-                  className="absolute left-0 top-2 w-3 h-3 rounded-full z-10"
-                  style={{ backgroundColor: "var(--primary)" }}
-                />
+                  {index !== career.length - 1 && (
+                    <div
+                      className="w-px flex-1 mt-1"
+                      style={{ backgroundColor: "var(--outline-variant)" }}
+                    />
+                  )}
+                </div>
 
-                <div className="flex flex-col gap-2">
+                {/* 右列：コンテンツ */}
+                <div className={`flex flex-col gap-2 ${index !== career.length - 1 ? "pb-8" : ""}`}>
                   <div
                     className="text-[14px]"
                     style={{ fontWeight: 600, lineHeight: 1.5, color: "var(--primary)" }}
