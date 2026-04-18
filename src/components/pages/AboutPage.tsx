@@ -137,21 +137,21 @@ export default function AboutPage() {
           <div className="flex flex-col gap-8">
             {career.map((item, index) => (
               <div key={index} className="relative pl-8">
-                {/* タイムラインドット */}
-                <div
-                  className="absolute left-0 top-2 w-3 h-3 rounded-full"
-                  style={{ backgroundColor: "var(--primary)" }}
-                />
-                {/* タイムラインライン */}
+                {/* タイムラインライン（ドットの背面） */}
                 {index !== career.length - 1 && (
                   <div
-                    className="absolute left-[5px] top-5 w-px"
+                    className="absolute left-[5px] top-2 w-px"
                     style={{
                       backgroundColor: "var(--outline-variant)",
                       bottom: "-2rem",
                     }}
                   />
                 )}
+                {/* タイムラインドット（線の前面） */}
+                <div
+                  className="absolute left-0 top-2 w-3 h-3 rounded-full z-10"
+                  style={{ backgroundColor: "var(--primary)" }}
+                />
 
                 <div className="flex flex-col gap-2">
                   <div
