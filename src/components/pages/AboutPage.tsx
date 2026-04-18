@@ -134,25 +134,21 @@ export default function AboutPage() {
             キャリアの流れ
           </h2>
 
-          <div className="flex flex-col">
-            {career.map((item, index) => (
-              <div key={index} className="flex gap-6">
-                {/* 左列：ドット + 線 */}
-                <div className="flex flex-col items-center">
+          <div className="relative pl-6">
+            {/* 1本の縦線 */}
+            <div
+              className="absolute left-[5px] top-0 bottom-0 w-px"
+              style={{ backgroundColor: "var(--outline-variant)" }}
+            />
+
+            <div className="flex flex-col gap-8">
+              {career.map((item, index) => (
+                <div key={index} className="relative flex flex-col gap-2">
+                  {/* ドット（線の上に重ねる） */}
                   <div
-                    className="w-3 h-3 rounded-full shrink-0 mt-1"
+                    className="absolute -left-6 top-1 w-3 h-3 rounded-full"
                     style={{ backgroundColor: "var(--primary)" }}
                   />
-                  {index !== career.length - 1 && (
-                    <div
-                      className="w-px flex-1 mt-1"
-                      style={{ backgroundColor: "var(--outline-variant)" }}
-                    />
-                  )}
-                </div>
-
-                {/* 右列：コンテンツ */}
-                <div className={`flex flex-col gap-2 ${index !== career.length - 1 ? "pb-8" : ""}`}>
                   <div
                     className="text-[14px]"
                     style={{ fontWeight: 600, lineHeight: 1.5, color: "var(--primary)" }}
@@ -185,8 +181,8 @@ export default function AboutPage() {
                     {item.description}
                   </p>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </motion.section>
 
