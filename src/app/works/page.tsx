@@ -116,7 +116,7 @@ export default function WorksPage() {
                     className="text-[16px] md:text-[18px]"
                     style={{ fontWeight: 400, lineHeight: 1.6, color: "var(--on-surface-variant)" }}
                   >
-                    {work.description}
+                    {work.overview}
                   </p>
 
                   {/* リンク */}
