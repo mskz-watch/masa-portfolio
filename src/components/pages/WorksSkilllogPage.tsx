@@ -26,7 +26,7 @@ const sections: Section[] = [
     content: [
       { label: "サービス名", value: "スキログ（Skill × Log）" },
       { label: "概要", value: "日常業務スキルを記録・可視化するサービス" },
-      { label: "ロール", value: "中間課題 / Webサイト企画" },
+      { label: "ロール", value: "UIデザイン / コーディング" },
       { label: "期間", value: "2025年7月 - 2025年9月（3ヶ月）" },
     ],
   },

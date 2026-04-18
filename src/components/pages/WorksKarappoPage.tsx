@@ -26,7 +26,7 @@ const sections: Section[] = [
     content: [
       { label: "サービス名", value: "Karappo（カラッポ）" },
       { label: "概要", value: "調味料の使い切りを支援し、毎日の料理に驚きを与えるアプリ" },
-      { label: "ロール", value: "卒業制作 / サービスデザイン" },
+      { label: "ロール", value: "サービスデザイン / UXリサーチ / プロトタイプ制作" },
       { label: "期間", value: "2025年11月 - 2026年2月（4ヶ月）" },
     ],
   },
