@@ -36,14 +36,6 @@ export default function Contact() {
             <br />
             ご連絡ください。
           </h2>
-          <p
-            className="text-[16px] mb-12"
-            style={{ fontWeight: 400, lineHeight: 1.8, color: "var(--on-surface-variant)" }}
-          >
-            お仕事のご依頼・ご相談・情報交換など、
-            どんなことでもお気軽にメッセージください。
-          </p>
-
           <motion.a
             href="mailto:mskz.terao31+work@gmail.com"
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105"
