@@ -37,7 +37,7 @@ const sections: Section[] = [
         text: "はじめは、自分の冷蔵庫で、ワクワクして買ったはずの調味料が結局使い切れず、買い物のたびに小さな罪悪感がある\n──そんな感覚からリサーチを始めました。",
       },
       {
-        text: "調べてみると、調味料は家庭内フードロスの第2位。10人に6人が調味料を余らせています（出典：Oisix 家庭内フードロスについて（2023年））。",
+        text: "調べてみると、調味料は家庭内フードロスの第2位。10人に6人が調味料を余らせています。",
       },
     ],
   },
@@ -261,6 +261,15 @@ export default function WorksKarappoPage() {
                 ))}
               </div>
 
+              {section.title === "Problem" && (
+                <Image
+                  src="/images/research.jpg"
+                  alt="調味料フードロスのリサーチデータ"
+                  width={1200}
+                  height={675}
+                  className="mt-8 w-full h-auto rounded-xl"
+                />
+              )}
               {section.title === "Insight" && (
                 <Image
                   src="/images/82007979ef475c0cddbb76d2fd5d4409c01d9fdb.png"
