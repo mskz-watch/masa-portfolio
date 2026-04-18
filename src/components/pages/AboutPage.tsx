@@ -9,25 +9,25 @@ const career = [
     year: "2019年〜",
     role: "生命保険会社 入社",
     department: "カスタマーサクセス（CS）部",
-    description: "顧客の声の分析・改善提言",
+    description: "お客さまの声の分析と業務改善の提案",
   },
   {
     year: "2023年〜",
     role: "グループ会社のシンクタンクに出向",
     department: "",
-    description: "AIなど最新テクノロジーの調査研究",
+    description: "AIを中心とした新しいテクノロジーの調査研究",
   },
   {
     year: "2025年4月〜",
     role: "デザイン組織へ異動",
     department: "",
-    description: "UIデザイン・UXコンセプト設計\nデザインシステム運用",
+    description: "UIデザイン・UXコンセプト設計・デザインシステム運用",
   },
   {
     year: "2026年3月",
     role: "デジタルハリウッド 本科UI/UXデザイン専攻 サービスデザインコースを卒業",
     department: "",
-    description: "デザインの基礎を学び、卒業制作ではサービスデザインを実践",
+    description: "卒業制作でサービスデザインに取り組みました。",
   },
 ];
 
